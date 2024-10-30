@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-work-experience',
@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   templateUrl: './work-experience.component.html',
   styleUrl: './work-experience.component.scss'
 })
-export class WorkExperienceComponent {
+export class WorkExperienceComponent implements OnInit {
+
+  @Input() experienceForm:  any;
+  
+  ngOnInit(): void {
+    console.log("form", this.experienceForm);
+  }
 
 }

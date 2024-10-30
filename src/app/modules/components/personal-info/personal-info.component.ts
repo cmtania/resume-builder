@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-personal-info',
@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   templateUrl: './personal-info.component.html',
   styleUrl: './personal-info.component.scss'
 })
-export class PersonalInfoComponent {
+export class PersonalInfoComponent implements OnInit {
 
+  @Input() personInfoForm: any;
+
+  ngOnInit(): void {
+    console.log("form", this.personInfoForm);
+  }
 }

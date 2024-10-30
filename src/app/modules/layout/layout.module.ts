@@ -7,13 +7,16 @@ import { PdfViewerComponent } from "../components/pdf-viewer/pdf-viewer.componen
 import { ResumeBuilderComponent } from "../components/resume-builder/resume-builder.component";
 import { PersonalInfoComponent } from "../components/personal-info/personal-info.component";
 import { WorkExperienceComponent } from "../components/work-experience/work-experience.component";
-import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    NgbCollapseModule
+    NgbCollapseModule,
+    ReactiveFormsModule,
+    NgbDatepickerModule
   ],  
   declarations: [
     LayoutComponent,

@@ -1,4 +1,14 @@
 <div class="container">
-    <app-personal-info></app-personal-info>
+    <div class="form-category d-flex justify-content-start">
+        <button type="button" class="btn me-2 px-3" (click)="displayForm(1)"  [ngClass]="{'active-form': activeIndex === 1}">
+            Personal
+        </button>
+        <button type="button" class="btn px-3" (click)="displayForm(2)" [ngClass]="{'active-form': activeIndex === 2}">
+            Experience
+        </button>
+    </div>
+    <div class="form-display">
+        <app-personal-info [personInfoForm]="personInfoForm" *ngIf="isPersonInfoShow"></app-personal-info>
+        <app-work-experience [experienceForm]= "experienceForm" *ngIf="isExperienceShow"></app-work-experience>
+    </div>
 </div>
-
