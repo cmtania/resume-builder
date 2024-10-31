@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-data',
@@ -11,10 +11,16 @@ export class FormDataComponent implements OnInit {
 
   isPersonInfoShow = true;
   isExperienceShow = false;
+  isEducationShow = false;
+  isSkillsShow = false;
+  isProjectShow = false;
   activeIndex = 1;
 
   personInfoForm: FormGroup;
   experienceForm: FormGroup;
+  educationForm: FormGroup;
+  skillsForm: FormGroup;
+  projectsForm: FormGroup;
 
   constructor(){
     this.personInfoForm = new FormGroup({
@@ -26,13 +32,24 @@ export class FormDataComponent implements OnInit {
     });
 
     this.experienceForm = new FormGroup({
-      company: new FormControl(""),
-      position: new FormControl(""),
+      workExperiences: new FormArray([])
+    });
+
+    this.educationForm = new FormGroup({
+      school: new FormControl(""),
+      degree: new FormControl(""),
       startDate: new FormControl(""),
       endDate: new FormControl(""),
-      jobSummary: new FormControl(""),
-      currentlyWork: new FormControl(false)
+      currentlyStudy: new FormControl(false)
     });
+
+    this.skillsForm = new FormGroup({
+      skills: new FormArray([])
+    });
+
+    this.projectsForm = new FormGroup({
+      projects: new FormArray([])
+    })
   }
 
   ngOnInit(): void {
@@ -41,6 +58,9 @@ export class FormDataComponent implements OnInit {
   displayForm(formIndex: number){
     this.isPersonInfoShow = formIndex === 1;
     this.isExperienceShow = formIndex === 2;
+    this.isEducationShow = formIndex === 3;
+    this.isSkillsShow = formIndex === 4;
+    this.isProjectShow = formIndex === 5;
     this.activeIndex = formIndex;
   }
 }

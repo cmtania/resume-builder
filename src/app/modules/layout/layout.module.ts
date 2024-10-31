@@ -9,6 +9,9 @@ import { PersonalInfoComponent } from "../components/personal-info/personal-info
 import { WorkExperienceComponent } from "../components/work-experience/work-experience.component";
 import { NgbCollapseModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from "@angular/forms";
+import { EducationComponent } from "../components/education/education.component";
+import { SkillComponent } from "../components/skill/skill.component";
+import { ProjectComponent } from "../components/project/project.component";
 
 @NgModule({
   imports: [
@@ -24,8 +27,10 @@ import { ReactiveFormsModule } from "@angular/forms";
     PdfViewerComponent,
     ResumeBuilderComponent,
     PersonalInfoComponent,
-    WorkExperienceComponent
-    
+    WorkExperienceComponent,
+    EducationComponent,
+    SkillComponent,
+    ProjectComponent
   ],
   exports:[],  
   providers:[

@@ -1,14 +1,26 @@
 <div class="container">
-    <div class="form-category d-flex justify-content-start">
-        <button type="button" class="btn me-2 px-3" (click)="displayForm(1)"  [ngClass]="{'active-form': activeIndex === 1}">
+    <div class="form-category">
+        <button type="button" class="btn" (click)="displayForm(1)"  [ngClass]="{'active-form': activeIndex === 1}">
             Personal
         </button>
-        <button type="button" class="btn px-3" (click)="displayForm(2)" [ngClass]="{'active-form': activeIndex === 2}">
+        <button type="button" class="btn" (click)="displayForm(2)" [ngClass]="{'active-form': activeIndex === 2}">
             Experience
+        </button>
+        <button type="button" class="btn" (click)="displayForm(3)" [ngClass]="{'active-form': activeIndex === 3}">
+            Education
+        </button>
+        <button type="button" class="btn" (click)="displayForm(4)" [ngClass]="{'active-form': activeIndex === 4}">
+            Skill
+        </button>
+        <button type="button" class="btn" (click)="displayForm(5)" [ngClass]="{'active-form': activeIndex === 5}">
+            Project
         </button>
     </div>
     <div class="form-display">
         <app-personal-info [personInfoForm]="personInfoForm" *ngIf="isPersonInfoShow"></app-personal-info>
         <app-work-experience [experienceForm]= "experienceForm" *ngIf="isExperienceShow"></app-work-experience>
+        <app-education [educationForm]= "educationForm" *ngIf="isEducationShow"></app-education>
+        <app-skills [skillsForm]= "skillsForm" *ngIf="isSkillsShow"></app-skills>
+        <app-project [projectsForm]= "projectsForm" *ngIf="isProjectShow"></app-project>
     </div>
 </div>
