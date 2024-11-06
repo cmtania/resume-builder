@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { EducationComponent } from "../components/education/education.component";
 import { SkillComponent } from "../components/skill/skill.component";
 import { ProjectComponent } from "../components/project/project.component";
+import { NgxsModule } from "@ngxs/store";
+import { ResumeDataState } from "../ngxs/resume.state";
 
 @NgModule({
   imports: [
@@ -19,7 +21,8 @@ import { ProjectComponent } from "../components/project/project.component";
     LayoutRoutingModule,
     NgbCollapseModule,
     ReactiveFormsModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    NgxsModule.forRoot([ResumeDataState])
   ],  
   declarations: [
     LayoutComponent,

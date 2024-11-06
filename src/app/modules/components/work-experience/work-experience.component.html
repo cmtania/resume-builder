@@ -5,11 +5,11 @@
                 <hr>
                 <div class="mb-3">
                     <label for="company" class="form-label">Company</label>
-                    <input type="text" class="form-control no-outline" formControlName="company" id="company">
+                    <input type="text" class="form-control no-outline" (keyup)="triggerUpdate($event)" formControlName="company" id="company">
                 </div>
                 <div class="mb-3">
                     <label for="position" class="form-label">Position</label>
-                    <input type="email" class="form-control no-outline" formControlName="position" id="position">
+                    <input type="email" class="form-control no-outline" (keyup)="triggerUpdate($event)" formControlName="position" id="position">
                 </div>
                 <div class="mb-3">
                     <label for="startDate" class="form-label">Start Date</label>
@@ -24,7 +24,7 @@
                     <div class="flex">
                         <input id="experience-0-present" class="rounded" type="checkbox" formControlName="currentWork"
                             name="experience.0.present">
-                        <label for="experience.0.present" class="working-here">Currently working here</label>
+                        <label for="experience.0.present"  class="working-here">Currently working here</label>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="jobSummary" class="form-label">Job Summary</label>
-                    <textarea type="text" class="form-control no-outline" formControlName="jobSummary"
+                    <textarea type="text" class="form-control no-outline" (keyup)="triggerUpdate($event)" formControlName="jobSummary"
                         id="jobSummary"></textarea>
                 </div>
                 <button id="add-work" (click)="removeWork(i)" type="button" class="btn px-3">

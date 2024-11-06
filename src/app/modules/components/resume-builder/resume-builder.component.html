@@ -1,35 +1,35 @@
 <div class="container">
     <!-- Header Section -->
     <div class="header">
-        <span class="full-name">CHRISTIAN M. TANIA</span>
+        <span class="full-name">{{fullname}}</span>
         <div class="contact-info">
-            <p>tania.devagmail.com</p>
-            <span>|</span>
-            <p>+123-456-7890</p>
-            <span>|</span>
-            <p>New York, USA</p>
+            <p>{{email}}</p>
+            <span *ngIf="phone">|</span>
+            <p>{{phone}}</p>
+            <span *ngIf="cityAddress">|</span>
+            <p>{{cityAddress}}</p>
         </div>
     </div>
 
     <!-- Summary Section -->
-    <div class="summary-section">
+    <div *ngIf="summary" class="summary-section">
         <h2>Summary</h2>
-        <p>A highly motivated and results-driven web developer with 5+ years of experience in building and maintaining responsive websites. Proficient in HTML, CSS, JavaScript, and popular frameworks such as Angular and React. A team player with excellent communication skills and attention to detail.</p>
+        <p>{{summary}}</p>
     </div>
 
     <!-- Work Experience Section -->
     <div class="work-section">
         <h2>Work Experience</h2>
         <div class="work-experience">
+            <div class="job" *ngFor="let work of workExperiences; let i = index">
+                <h3>{{work.position}} - {{work.company}}</h3>
+                <span>{{work.jobDate}}</span>
+                <p>{{work.summary}}</p>
+            </div>
             <div class="job">
                 <h3>Front-End Developer - ABC Tech</h3>
                 <span>January 2020 - Present | New York, USA</span>
                 <p>Responsible for creating dynamic, responsive web pages using Angular and JavaScript. Improved site performance by 30% through optimized code and enhanced user experience.</p>
-            </div>
-            <div class="job">
-                <h3>Web Developer - XYZ Solutions</h3>
-                <span>June 2017 - December 2019 | San Francisco, USA</span>
-                <p>Developed and maintained e-commerce websites using HTML, CSS, and JavaScript. Collaborated with cross-functional teams to enhance site functionality and user experience.</p>
             </div>
         </div>
     </div>

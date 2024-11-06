@@ -1,4 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { UpdatePersonInfo } from '../../ngxs/resume.actions';
+import { SubSink } from 'subsink';
+import { Subscription } from 'rxjs';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-personal-info',
@@ -8,9 +13,25 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PersonalInfoComponent implements OnInit {
 
-  @Input() personInfoForm: any;
+  @Input() personInfoForm = new FormGroup({
+    fullName: new FormControl(""),
+    email: new FormControl(""),
+    phone: new FormControl(""),
+    cityAddress: new FormControl(""),
+    summary: new FormControl(""),
+  });
 
+  constructor(private store: Store) {
+
+  }
+ 
   ngOnInit(): void {
     console.log("form", this.personInfoForm);
   }
+
+  triggerUpdate($event: any){
+    console.log("trigger", $event);
+    this.store.dispatch(new UpdatePersonInfo(this.personInfoForm));
+  }
+
 }

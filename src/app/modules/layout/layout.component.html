@@ -7,8 +7,14 @@
         <div id="data-container" class="col-12 col-md-4 p-3">
            <app-form-data></app-form-data>
         </div>
-        <div id="viewer-container" class="col-12 col-md-8 p-3">
-            <app-resume-builder></app-resume-builder>
+        <div class="col-12 col-md-8 p-3">
+            <app-resume-builder id="viewer-container"></app-resume-builder>
+            <div>
+                <hr>
+                <button id="generate" (click)="generate()" type="button" class="btn px-3">
+                    Generate
+                </button>
+            </div>
         </div>
     </div>
 </div>

@@ -36,11 +36,7 @@ export class FormDataComponent implements OnInit {
     });
 
     this.educationForm = new FormGroup({
-      school: new FormControl(""),
-      degree: new FormControl(""),
-      startDate: new FormControl(""),
-      endDate: new FormControl(""),
-      currentlyStudy: new FormControl(false)
+      educations: new FormArray([])
     });
 
     this.skillsForm = new FormGroup({
@@ -49,7 +45,7 @@ export class FormDataComponent implements OnInit {
 
     this.projectsForm = new FormGroup({
       projects: new FormArray([])
-    })
+    });
   }
 
   ngOnInit(): void {
