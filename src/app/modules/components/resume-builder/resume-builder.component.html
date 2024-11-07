@@ -18,7 +18,7 @@
     </div>
 
     <!-- Work Experience Section -->
-    <div class="work-section">
+    <div class="work-section" *ngIf="workExperiences.length > 0">
         <h2>Work Experience</h2>
         <div class="work-experience">
             <div class="job" *ngFor="let work of workExperiences; let i = index">
@@ -26,27 +26,16 @@
                 <span>{{work.jobDate}}</span>
                 <p>{{work.summary}}</p>
             </div>
-            <div class="job">
-                <h3>Front-End Developer - ABC Tech</h3>
-                <span>January 2020 - Present | New York, USA</span>
-                <p>Responsible for creating dynamic, responsive web pages using Angular and JavaScript. Improved site performance by 30% through optimized code and enhanced user experience.</p>
-            </div>
         </div>
     </div>
 
     <!-- Education Section -->
-    <div class="educ-section">
+    <div class="educ-section" *ngIf="educations.length > 0">
         <h2>Education</h2>
         <div class="education">
-            <div class="degree">
-                <h3>Bachelor of Science in Computer Science</h3>
-                <span>2013 - 2017 | University of California, Berkeley</span>
-            </div>
-        </div>
-        <div class="education">
-            <div class="degree">
-                <h3>Bachelor of Science in Computer Science</h3>
-                <span>2013 - 2017 | University of California, Berkeley</span>
+            <div class="degree" *ngFor="let school of educations; let i = index">
+                <h3>{{school.degree}}</h3>
+                <span>{{school.schoolDate}} | {{school.school}}</span>
             </div>
         </div>
     </div>

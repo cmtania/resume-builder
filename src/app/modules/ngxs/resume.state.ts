@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { UpdateExperienceForm, UpdatePersonInfo } from './resume.actions';
+import { UpdateEducationForm, UpdateExperienceForm, UpdatePersonInfo } from './resume.actions';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 export interface ResumeDataInterfaceStateModel {
@@ -60,6 +60,15 @@ export class ResumeDataState {
     ctx.patchState({
       ...state,
       experienceForm: action.payload
+    });
+  }
+
+  @Action(UpdateEducationForm)
+  updateEducationForm(ctx: StateContext<ResumeDataInterfaceStateModel>, action: UpdateEducationForm) {
+    const state = ctx.getState();
+    ctx.patchState({
+      ...state,
+      educationForm: action.payload
     });
   }
 }

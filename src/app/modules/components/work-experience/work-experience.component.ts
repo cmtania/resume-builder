@@ -41,15 +41,23 @@ export class WorkExperienceComponent implements OnInit {
       )
     );
 
-    this.triggerUpdate(null);
+    this.triggerUpdate();
   }
 
   removeWork(index: number): void {
     this.workExperiences.removeAt(index);
+    this.store.dispatch(new UpdateExperienceForm(this.experienceForm));
   }
 
-  triggerUpdate($event: any){
-    console.log("trigger", $event);
+  triggerUpdate(){
+    this.store.dispatch(new UpdateExperienceForm(this.experienceForm));
+  }
+
+  onDateSelect(){
+    this.store.dispatch(new UpdateExperienceForm(this.experienceForm));
+  }
+
+  onCheckboxChange(){
     this.store.dispatch(new UpdateExperienceForm(this.experienceForm));
   }
 }
