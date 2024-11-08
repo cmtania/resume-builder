@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl } from '@angular/forms';
+import { Store } from '@ngxs/store';
+import { AddSkills } from '../../ngxs/resume.actions';
 
 @Component({
   selector: 'app-skills',
@@ -27,6 +29,9 @@ export class SkillComponent implements OnInit {
     "AWS"
   ];
 
+  constructor(private store: Store) {
+  }
+
   ngOnInit(): void {
     console.log("skillsForm", this.skillsForm);
   }
@@ -37,9 +42,16 @@ export class SkillComponent implements OnInit {
 
   removeSkill(index: number): void {
     this.skills.removeAt(index);
+    this.triggerUpdate();
   }
 
   addSkill(skill: string): void {
       this.skills.push(new FormControl(skill));
+      this.triggerUpdate();
   }
+
+  triggerUpdate(){
+    this.store.dispatch(new AddSkills(this.skillsForm));
+  }
+
 }

@@ -26,11 +26,10 @@ export class PersonalInfoComponent implements OnInit {
   }
  
   ngOnInit(): void {
-    console.log("form", this.personInfoForm);
+    console.log("PersonalInfoComponent loaded");
   }
 
   triggerUpdate($event: any){
-    console.log("trigger", $event);
     this.store.dispatch(new UpdatePersonInfo(this.personInfoForm));
   }
 

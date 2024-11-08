@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { ResumeDataInterfaceStateModel, ResumeDataState } from '../../ngxs/resume.state';
 import { Actions, ofActionSuccessful, Select, Store } from '@ngxs/store';
 import { FormArray, FormGroup } from '@angular/forms';
-import { UpdateEducationForm, UpdateExperienceForm, UpdatePersonInfo } from '../../ngxs/resume.actions';
+import { AddSkills, UpdateEducationForm, UpdateExperienceForm, UpdatePersonInfo, UpdateProjectForm } from '../../ngxs/resume.actions';
 import { SubSink } from 'subsink';
 
 @Component({
@@ -25,6 +25,8 @@ export class ResumeBuilderComponent implements OnInit {
 
   workExperiences: Array<any> = [];
   educations: Array<any> = [];
+  skills: Array<string> = [];
+  projects: Array<any> = [];
 
   private subs = new SubSink();
 
@@ -32,7 +34,9 @@ export class ResumeBuilderComponent implements OnInit {
     this.subs.add(
         this.listenToPersonInfoForm(),
         this.listenToExperienceForm(),
-        this.listenToEducationForm()
+        this.listenToEducationForm(),
+        this.listenToSkillsForm(),
+        this.listenToProjectsForm()
       );
   }
 
@@ -66,17 +70,32 @@ export class ResumeBuilderComponent implements OnInit {
   listenToEducationForm(){
     return this.actions$.pipe(ofActionSuccessful(UpdateEducationForm)).subscribe(()=> {
       const resumeDataState = this.store.selectSnapshot(x => x.resumeData) as ResumeDataInterfaceStateModel;
-      console.log("listenToEducationForm", resumeDataState);
       const educations = resumeDataState.educationForm.get('educations') as FormArray;
-      console.log("educations", educations);
       this.educations = [];
       this.getEducation(educations);
     });
   }
 
+  listenToSkillsForm(){
+    return this.actions$.pipe(ofActionSuccessful(AddSkills)).subscribe(()=> {
+      const resumeDataState = this.store.selectSnapshot(x => x.resumeData) as ResumeDataInterfaceStateModel;
+      const skills = resumeDataState.skillForm.get('skills') as FormArray;
+      this.skills = [];
+      this.getSkills(skills);
+    });
+  }
+
+  listenToProjectsForm(){
+    return this.actions$.pipe(ofActionSuccessful(UpdateProjectForm)).subscribe(()=> {
+      const resumeDataState = this.store.selectSnapshot(x => x.resumeData) as ResumeDataInterfaceStateModel;
+      const projects = resumeDataState.projectForm.get('projects') as FormArray;
+      this.projects = [];
+      this.getProjects(projects);
+    });
+  }
+
   private getEducation(educations: FormArray){
     for (const [index, control] of educations.controls.entries()) {
-      console.log(`Item ${index + 1}:`, control.value);
       const educationData = control.value;
       const end = educationData?.currentlyStudy ? "Present" : educationData?.startDate;
       const schoolDate = `${educationData?.endDate} - ${end}`;
@@ -95,7 +114,6 @@ export class ResumeBuilderComponent implements OnInit {
 
   private getWorkExperience(workExperience: FormArray){
     for (const [index, control] of workExperience.controls.entries()) {
-      console.log(`Item ${index + 1}:`, control.value);
       const experience = control.value;
       const end = experience?.currentWork ? "Present" : this.formatDate(experience.endDate);
       const workRange = `${this.formatDate(experience.startDate)} - ${end}`;
@@ -107,6 +125,29 @@ export class ResumeBuilderComponent implements OnInit {
             position: experience?.position,
             jobDate: workRange,
             summary: experience?.jobSummary
+          }
+        )
+      }
+    }
+  }
+
+  private getSkills(skills: FormArray){
+    for (const [index, control] of skills.controls.entries()) {
+      if(control.value){
+        this.skills.push(control.value);
+      }
+    }
+  }
+
+  private getProjects(projects: FormArray){
+    for (const [index, control] of projects.controls.entries()) {
+      const project = control.value;
+
+      if(project?.projectName || project?.description){
+        this.projects.push(
+          {
+            projectName: project?.projectName,
+            description: project?.description,
           }
         )
       }

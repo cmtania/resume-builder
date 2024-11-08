@@ -1,7 +1,7 @@
-<div class="container">
+<div id="resume-builder" class="container">
     <!-- Header Section -->
     <div class="header">
-        <span class="full-name">{{fullname}}</span>
+        <h2 class="full-name">{{fullname}}</h2>
         <div class="contact-info">
             <p>{{email}}</p>
             <span *ngIf="phone">|</span>
@@ -41,31 +41,20 @@
     </div>
 
     <!-- Skills Section -->
-    <div class="skill-section">
+    <div class="skill-section" *ngIf="skills.length > 0">
         <h2>Skills</h2>
         <ul class="skills-list">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>Angular</li>
-            <li>React</li>
-            <li>Node.js</li>
-            <li>Git</li>
+            <li *ngFor="let skill of skills; let i = index">{{skill}}</li>
         </ul>
     </div>
 
     <!-- Projects Section -->
-    <div class="project-section">
+    <div class="project-section" *ngIf="projects.length > 0">
         <h2>Projects</h2>
-
         <div class="projects">
-            <div class="project">
-                <h3>E-commerce Website</h3>
-                <p>Developed a full-stack e-commerce platform using Angular and Node.js, allowing users to browse products, manage their carts, and securely complete purchases.</p>
-            </div>
-            <div class="project">
-                <h3>Portfolio Website</h3>
-                <p>Created a personal portfolio website showcasing various projects and skills using HTML, CSS, and JavaScript.</p>
+            <div class="project" *ngFor="let proj of projects; let i = index">
+                <h3>{{proj.projectName}}</h3>
+                <p>{{proj.description}}</p>
             </div>
         </div>
     </div>

@@ -5,12 +5,12 @@
                 <hr>
                 <div class="mb-3">
                     <label for="projectName" class="form-label">Project</label>
-                    <input type="text" class="form-control no-outline" formControlName="projectName" id="projectName">
+                    <input type="text" class="form-control no-outline" formControlName="projectName" id="projectName" (keyup)="triggerUpdate()">
                 </div>
                 <div class="mb-3">
                     <label for="zip" class="form-label">Project/Role description</label>
                     <textarea type="text" class="form-control no-outline" formControlName="description"
-                        id="description"></textarea>
+                        id="description" (keyup)="triggerUpdate()"></textarea>
                 </div>
                 <button id="add-project" (click)="removeProject(i)" type="button" class="btn px-3">
                     Remove project

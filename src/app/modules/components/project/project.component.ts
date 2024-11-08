@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { Store } from '@ngxs/store';
+import { UpdateProjectForm } from '../../ngxs/resume.actions';
 
 @Component({
   selector: 'app-project',
@@ -10,13 +12,14 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 export class ProjectComponent implements OnInit {
 
   @Input() projectsForm: any;
+
+  constructor(private store: Store) {
+  }
   
   ngOnInit(): void {
     if(this.projects.length === 0){
       this.addProject();
     }
-   
-    console.log("projectForm", this.projectsForm);
   }
 
   get projects(): FormArray {
@@ -30,10 +33,17 @@ export class ProjectComponent implements OnInit {
         description: new FormControl(description)
       })
     );
+
+    this.triggerUpdate();
   }
 
   removeProject(index: number): void {
     this.projects.removeAt(index);
+    this.triggerUpdate();
+  }
+
+  triggerUpdate(){
+    this.store.dispatch(new UpdateProjectForm(this.projectsForm));
   }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { UpdateEducationForm, UpdateExperienceForm, UpdatePersonInfo } from './resume.actions';
+import { AddSkills, UpdateEducationForm, UpdateExperienceForm, UpdatePersonInfo, UpdateProjectForm } from './resume.actions';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 export interface ResumeDataInterfaceStateModel {
@@ -45,7 +45,6 @@ export class ResumeDataState {
 
   @Action(UpdatePersonInfo)
   updatePersonInfo(ctx: StateContext<ResumeDataInterfaceStateModel>, action: UpdatePersonInfo) {
-    console.log("update", action.payload);
     const state = ctx.getState();
     ctx.patchState({
       ...state,
@@ -55,7 +54,6 @@ export class ResumeDataState {
 
   @Action(UpdateExperienceForm)
   updateExperienceForm(ctx: StateContext<ResumeDataInterfaceStateModel>, action: UpdateExperienceForm) {
-    console.log("UpdateExperienceForm", action.payload);
     const state = ctx.getState();
     ctx.patchState({
       ...state,
@@ -69,6 +67,24 @@ export class ResumeDataState {
     ctx.patchState({
       ...state,
       educationForm: action.payload
+    });
+  }
+
+  @Action(AddSkills)
+  addSkill(ctx: StateContext<ResumeDataInterfaceStateModel>, action: AddSkills) {
+    const state = ctx.getState();
+    ctx.patchState({
+      ...state,
+      skillForm: action.payload
+    });
+  }
+
+  @Action(UpdateProjectForm)
+  updateProjectForm(ctx: StateContext<ResumeDataInterfaceStateModel>, action: UpdateProjectForm) {
+    const state = ctx.getState();
+    ctx.patchState({
+      ...state,
+      projectForm: action.payload
     });
   }
 }

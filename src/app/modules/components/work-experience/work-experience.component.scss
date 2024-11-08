@@ -21,13 +21,14 @@ input {
 
 #remove-work,
 #add-work {
-    background-color: #ffffff;
-    color: #000;
-    border: 1px solid #000;
-    border-radius: .375rem;
-    border-width: 1px;
-    font-size: 14px;
-    transition: background-color 0.4s ease, color 0.4s ease, transform 0.4s ease;
+  background-color: #000;
+  color: #ffffff;
+  border: 1px solid #000;
+  border-radius: .375rem;
+  border-width: 1px;
+  font-size: 14px;
+  font-weight: 200;
+  transition: background-color 0.4s ease, color 0.4s ease, transform 0.4s ease;
   }
   #remove-work:hover,
   #add-work:hover {

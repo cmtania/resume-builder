@@ -11,7 +11,7 @@
             <div *ngFor="let skill of skills.controls; let i = index">
               <div class="mb-3">
                 <div class="input-group">
-                    <input type="text" class="form-control no-outline" [formControlName]="i" placeholder="Enter skill">
+                    <input type="text" class="form-control no-outline" [formControlName]="i" placeholder="Enter skill" (keyup)="triggerUpdate()">
                     <button id="remove-skill" (click)="removeSkill(i)" type="button" class="btn px-3">
                         Remove</button>
                 </div>

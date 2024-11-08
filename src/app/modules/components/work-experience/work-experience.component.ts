@@ -20,8 +20,6 @@ export class WorkExperienceComponent implements OnInit {
     if(this.workExperiences.length === 0){
       this.addWork();
     }
-
-    console.log("form", this.experienceForm);
   }
 
   get workExperiences(): FormArray {
