@@ -11,30 +11,30 @@ export class LayoutComponent implements OnInit {
 
   constructor(){}
 
+  htmlData: any;
   contact =  {
     Email: 'mailto:tania.dev.ph@gmail.com',
     Linkedin: 'https://www.linkedin.com/in/taniachristian/',
-    Github: 'https://github.com/cmtania',
-    Instagram: 'https://www.instagram.com/_xtiantaniaaaa/',
+    Github: 'https://github.com/cmtania'
    };
 
   ngOnInit(): void {
   }
 
   generate(){
-    const htmlData = document.getElementById("resume-builder");
+    const htmlData = document.getElementById("builder-container");
+    
+    htmlData?.classList.add("pdf-view");
    
     let pdf = new jsPDF({
       orientation: "portrait",
       unit: "pt",
       format: [800, 925],
-      precision: 10,
-      
+      precision: 10
     });
 
     pdf.setFont("sans-serif");
 
-    // htmlData?.setAttribute("style", "width: 800px !important; height:925px");
     console.log("htmlData", htmlData);
     setTimeout(() => {
      
@@ -44,6 +44,8 @@ export class LayoutComponent implements OnInit {
         for(let i = pageCount; i > 1; i--){
           pdf.deletePage(i);
         }
+
+        htmlData?.classList.remove("pdf-view");
         
         pdf.save("my-resume.pdf");
       });
