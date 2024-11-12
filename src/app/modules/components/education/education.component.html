@@ -5,32 +5,37 @@
                 <hr>
                 <div class="mb-3">
                     <label for="school" class="form-label">School/University</label>
-                    <input type="text" class="form-control no-outline" (keyup)="triggerUpdate()"  formControlName="school" id="school">
+                    <input type="text" class="form-control no-outline" (keyup)="triggerUpdate()"
+                        formControlName="school" id="school">
                 </div>
                 <div class="mb-3">
                     <label for="degree" class="form-label">Course/Degree</label>
-                    <input type="email" class="form-control no-outline" (keyup)="triggerUpdate()"  formControlName="degree" id="degree">
+                    <input type="email" class="form-control no-outline" (keyup)="triggerUpdate()"
+                        formControlName="degree" id="degree">
                 </div>
-                <div class="mb-3">
-                    <label for="startDate" class="form-label">Start Date (Year)</label>
-                    <div class="input-group">
-                        <select class="form-select" aria-label="Select start year" formControlName="startDate" (change)="onYearSelect()">
+                <div class="mb-3 d-flex justify-content-between align-items-start">
+                    <div class="w-50 pe-2">
+                        <label for="startDate" class="form-label">Start Date (Year)</label>
+                        <div class="input-group">
+                            <select class="form-select" id="startDate" aria-label="Select start year"
+                                formControlName="startDate" (change)="onYearSelect()">
+                                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="w-50 ps-2">
+                        <label for="endDate" class="form-label">End Date (Year)</label>
+                        <select class="form-select" id="endDate" aria-label="Select end year" formControlName="endDate"
+                            (change)="onYearSelect()">
                             <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-                          </select>
+                        </select>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <div class="flex">
-                        <input id="education-0-present" class="rounded mr-2" type="checkbox" formControlName="currentlyStudy"
-                            name="education.0.present" (change)="onCheckboxChange()">
-                        <label for="education.0.present" class="study-here ml-2">Currently studying here</label>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="endDate" class="form-label">End Date (Year)</label>
-                    <select class="form-select" aria-label="Select start year" formControlName="endDate" (change)="onYearSelect()">
-                        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-                      </select>
+                <div class="mb-3 d-flex align-items-center">
+                    <input id="currentlyStudy" type="checkbox" formControlName="currentlyStudy"
+                        class="form-check-input me-2" (change)="onCheckboxChange()" />
+                    <label for="currentlyStudy" class="form-check-label">Currently studying here</label>
                 </div>
                 <button id="add-education" (click)="removeEducation(i)" type="button" class="btn px-3">
                     Remove education

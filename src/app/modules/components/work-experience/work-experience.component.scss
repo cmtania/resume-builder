@@ -6,6 +6,7 @@
     font-size: 14px;
     border-color: #6d6e7069;
     border-width: 1.5px;
+    border-radius: .375rem;
 }
 
 .no-outline:focus {
@@ -14,10 +15,6 @@
     border-color: #020817;
     border-width: 2px;
   }
-
-input {
-    border-radius: .375rem !important;
-}
 
 #remove-work,
 #add-work {
@@ -33,6 +30,26 @@ input {
   #remove-work:hover,
   #add-work:hover {
     animation: smoothHover 0.4s ease forwards;
+  }
+
+  input {
+    #startDate,
+    #endDate {
+      border-top-right-radius: 0px !important;
+      border-bottom-right-radius: 0px !important;
+    }
+  }
+
+  button {
+    #btn-endDate,
+    #btn-startDate {
+      border-color: #6d6e7069 !important;
+      // border-width: 2px !important;
+    }
+  }
+
+  #currentWork {
+    margin-bottom: 1px;
   }
   
   @keyframes smoothHover {

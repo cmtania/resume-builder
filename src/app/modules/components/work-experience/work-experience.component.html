@@ -16,15 +16,8 @@
                     <div class="input-group">
                         <input id="startDate" class="form-control" placeholder="yyyy-mm-dd" name="startDate"
                             formControlName="startDate" ngbDatepicker #startDateDp="ngbDatepicker" (dateSelect)="onDateSelect()" />
-                        <button class="btn btn-outline-secondary bi bi-calendar3" (click)="startDateDp.toggle()"
+                        <button id="btn-startDate" class="btn btn-outline-secondary bi bi-calendar3" (click)="startDateDp.toggle()"
                             type="button"></button>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="flex">
-                        <input id="experience-0-present" class="rounded" type="checkbox" formControlName="currentWork"
-                            name="experience.0.present" (change)="onCheckboxChange()">
-                        <label for="experience.0.present"  class="working-here">Currently working here</label>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -32,10 +25,17 @@
                     <div class="input-group">
                         <input id="endDate" class="form-control" placeholder="yyyy-mm-dd" name="endDate"
                             formControlName="endDate" ngbDatepicker #endDateDp="ngbDatepicker"  (dateSelect)="onDateSelect()" />
-                        <button class="btn btn-outline-secondary bi bi-calendar3" (click)="endDateDp.toggle()"
+                        <button id="btn-endDate" class="btn btn-outline-secondary bi bi-calendar3" (click)="endDateDp.toggle()"
                             type="button"></button>
                     </div>
                 </div>
+
+                <div class="mb-3 d-flex align-items-center">
+                    <input id="currentWork" type="checkbox" formControlName="currentWork"
+                        class="form-check-input me-2" (change)="onCheckboxChange()" />
+                    <label for="currentWork" class="form-check-label">Currently working here</label>
+                </div>
+                
                 <div class="mb-3">
                     <label for="jobSummary" class="form-label">Job Summary</label>
                     <textarea type="text" class="form-control no-outline" (keyup)="triggerUpdate()" formControlName="jobSummary"

@@ -34,6 +34,10 @@ input {
   #add-education:hover {
     animation: smoothHover 0.4s ease forwards;
   }
+
+    #currentlyStudy {
+      margin-bottom: 1px;
+    }
   
   @keyframes smoothHover {
     0% {
