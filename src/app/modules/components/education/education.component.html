@@ -18,7 +18,7 @@
                         <label for="startDate" class="form-label">Start Date (Year)</label>
                         <div class="input-group">
                             <select class="form-select" id="startDate" aria-label="Select start year"
-                                formControlName="startDate" (change)="onYearSelect()">
+                                formControlName="startDate" (change)="triggerUpdate()">
                                 <option *ngFor="let year of years" [value]="year">{{ year }}</option>
                             </select>
                         </div>
@@ -27,14 +27,14 @@
                     <div class="w-50 ps-2">
                         <label for="endDate" class="form-label">End Date (Year)</label>
                         <select class="form-select" id="endDate" aria-label="Select end year" formControlName="endDate"
-                            (change)="onYearSelect()">
+                            (change)="triggerUpdate()">
                             <option *ngFor="let year of years" [value]="year">{{ year }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="mb-3 d-flex align-items-center">
                     <input id="currentlyStudy" type="checkbox" formControlName="currentlyStudy"
-                        class="form-check-input me-2" (change)="onCheckboxChange()" />
+                        class="form-check-input me-2" (change)="triggerUpdate()" />
                     <label for="currentlyStudy" class="form-check-label">Currently studying here</label>
                 </div>
                 <button id="add-education" (click)="removeEducation(i)" type="button" class="btn px-3">

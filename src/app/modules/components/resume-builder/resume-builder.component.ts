@@ -5,6 +5,7 @@ import { Actions, ofActionSuccessful, Select, Store } from '@ngxs/store';
 import { FormArray, FormGroup } from '@angular/forms';
 import { AddSkills, UpdateEducationForm, UpdateExperienceForm, UpdatePersonInfo, UpdateProjectForm } from '../../ngxs/resume.actions';
 import { SubSink } from 'subsink';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-resume-builder',
@@ -14,7 +15,6 @@ import { SubSink } from 'subsink';
 })
 export class ResumeBuilderComponent implements OnInit {
 
-  // personalInfo$?: Observable<any> = inject(Store).select(ResumeDataState.getPersonalInfo);
   @Select(ResumeDataState.getPersonalInfo) personalInfo$!: Observable<FormGroup>;
   
   fullname = "";
@@ -30,7 +30,7 @@ export class ResumeBuilderComponent implements OnInit {
 
   private subs = new SubSink();
 
-  constructor(private store: Store, private actions$: Actions) {
+  constructor(private storeService: StoreService, private actions$: Actions) {
     this.subs.add(
         this.listenToPersonInfoForm(),
         this.listenToExperienceForm(),
@@ -40,28 +40,23 @@ export class ResumeBuilderComponent implements OnInit {
       );
   }
 
-  ngOnInit(): void {
-  }
-
-  exportHtmlToPdf(){
-
-  }
+  ngOnInit(): void {}
 
   listenToPersonInfoForm(){
     return this.actions$.pipe(ofActionSuccessful(UpdatePersonInfo)).subscribe(()=>{
-      const resumeDataState = this.store.selectSnapshot(x => x.resumeData) as ResumeDataInterfaceStateModel;
-      this.fullname = resumeDataState.personalInfoForm.controls["fullName"].value;
-      this.email = resumeDataState.personalInfoForm.controls["email"].value;
-      this.phone = resumeDataState.personalInfoForm.controls["phone"].value;
-      this.cityAddress = resumeDataState.personalInfoForm.controls["cityAddress"].value;
-      this.summary = resumeDataState.personalInfoForm.controls["summary"].value;
+      const personalInfo = this.storeService.getPersonalInfo();
+      this.fullname = personalInfo.FullName;
+      this.email = personalInfo.Email;
+      this.phone = personalInfo.Phone;
+      this.cityAddress = personalInfo.CityAddress;
+      this.summary = personalInfo.Summary;
     });
   }
 
   listenToExperienceForm(){
     return this.actions$.pipe(ofActionSuccessful(UpdateExperienceForm)).subscribe(()=>{
-      const resumeDataState = this.store.selectSnapshot(x => x.resumeData) as ResumeDataInterfaceStateModel;
-      const workExperience = resumeDataState.experienceForm.get('workExperiences') as FormArray;
+      const workExperience = this.storeService.getWorkExperience();
+      
       this.workExperiences = [];
       this.getWorkExperience(workExperience);
     });
@@ -69,8 +64,8 @@ export class ResumeBuilderComponent implements OnInit {
 
   listenToEducationForm(){
     return this.actions$.pipe(ofActionSuccessful(UpdateEducationForm)).subscribe(()=> {
-      const resumeDataState = this.store.selectSnapshot(x => x.resumeData) as ResumeDataInterfaceStateModel;
-      const educations = resumeDataState.educationForm.get('educations') as FormArray;
+      const educations = this.storeService.getEducations();
+
       this.educations = [];
       this.getEducation(educations);
     });
@@ -78,8 +73,8 @@ export class ResumeBuilderComponent implements OnInit {
 
   listenToSkillsForm(){
     return this.actions$.pipe(ofActionSuccessful(AddSkills)).subscribe(()=> {
-      const resumeDataState = this.store.selectSnapshot(x => x.resumeData) as ResumeDataInterfaceStateModel;
-      const skills = resumeDataState.skillForm.get('skills') as FormArray;
+      const skills = this.storeService.getSkills();
+
       this.skills = [];
       this.getSkills(skills);
     });
@@ -87,8 +82,8 @@ export class ResumeBuilderComponent implements OnInit {
 
   listenToProjectsForm(){
     return this.actions$.pipe(ofActionSuccessful(UpdateProjectForm)).subscribe(()=> {
-      const resumeDataState = this.store.selectSnapshot(x => x.resumeData) as ResumeDataInterfaceStateModel;
-      const projects = resumeDataState.projectForm.get('projects') as FormArray;
+      const projects = this.storeService.getProjects();
+      
       this.projects = [];
       this.getProjects(projects);
     });
@@ -169,6 +164,10 @@ export class ResumeBuilderComponent implements OnInit {
     ];
     
     return monthNumber >= 1 && monthNumber <= 12 ? monthNames[monthNumber - 1] : '';
+  }
+
+  ngOndestroy(): void {
+    this.subs.unsubscribe();
   }
 
 }

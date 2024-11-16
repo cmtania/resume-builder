@@ -15,7 +15,7 @@
                     <label for="startDate" class="form-label">Start Date</label>
                     <div class="input-group">
                         <input id="startDate" class="form-control" placeholder="yyyy-mm-dd" name="startDate"
-                            formControlName="startDate" ngbDatepicker #startDateDp="ngbDatepicker" (dateSelect)="onDateSelect()" />
+                            formControlName="startDate" ngbDatepicker #startDateDp="ngbDatepicker" (dateSelect)="triggerUpdate()" />
                         <button id="btn-startDate" class="btn btn-outline-secondary bi bi-calendar3" (click)="startDateDp.toggle()"
                             type="button"></button>
                     </div>
@@ -24,7 +24,7 @@
                     <label for="endDate" class="form-label">End Date</label>
                     <div class="input-group">
                         <input id="endDate" class="form-control" placeholder="yyyy-mm-dd" name="endDate"
-                            formControlName="endDate" ngbDatepicker #endDateDp="ngbDatepicker"  (dateSelect)="onDateSelect()" />
+                            formControlName="endDate" ngbDatepicker #endDateDp="ngbDatepicker"  (dateSelect)="triggerUpdate()" />
                         <button id="btn-endDate" class="btn btn-outline-secondary bi bi-calendar3" (click)="endDateDp.toggle()"
                             type="button"></button>
                     </div>
@@ -32,7 +32,7 @@
 
                 <div class="mb-3 d-flex align-items-center">
                     <input id="currentWork" type="checkbox" formControlName="currentWork"
-                        class="form-check-input me-2" (change)="onCheckboxChange()" />
+                        class="form-check-input me-2" (change)="triggerUpdate()" />
                     <label for="currentWork" class="form-check-label">Currently working here</label>
                 </div>
                 

@@ -14,6 +14,7 @@ import { SkillComponent } from "../components/skill/skill.component";
 import { ProjectComponent } from "../components/project/project.component";
 import { NgxsModule } from "@ngxs/store";
 import { ResumeDataState } from "../ngxs/resume.state";
+import { StoreService } from "../services/store.service";
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { ResumeDataState } from "../ngxs/resume.state";
   ],
   exports:[],  
   providers:[
+    StoreService
    ]
 
 })

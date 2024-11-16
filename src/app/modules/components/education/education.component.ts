@@ -24,8 +24,6 @@ export class EducationComponent implements OnInit {
       this.addEducation();
     }
 
-   
-   
     console.log("educationForm", this.educationForm);
   }
 
@@ -47,21 +45,10 @@ export class EducationComponent implements OnInit {
 
   removeEducation(index: number): void {
     this.educations.removeAt(index);
+    this.triggerUpdate();
   }
 
   triggerUpdate(){
-    this.store.dispatch(new UpdateEducationForm(this.educationForm));
-  }
-
-  onDateSelect(){
-    this.store.dispatch(new UpdateEducationForm(this.educationForm));
-  }
-
-  onCheckboxChange(){
-    this.store.dispatch(new UpdateEducationForm(this.educationForm));
-  }
-
-  onYearSelect(){
     this.store.dispatch(new UpdateEducationForm(this.educationForm));
   }
 

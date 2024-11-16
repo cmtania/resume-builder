@@ -17,10 +17,22 @@
         </button>
     </div>
     <div class="form-display">
-        <app-personal-info [personInfoForm]="personInfoForm" *ngIf="isPersonInfoShow"></app-personal-info>
-        <app-work-experience [experienceForm]= "experienceForm" *ngIf="isExperienceShow"></app-work-experience>
-        <app-education [educationForm]= "educationForm" *ngIf="isEducationShow"></app-education>
-        <app-skills [skillsForm]= "skillsForm" *ngIf="isSkillsShow"></app-skills>
-        <app-project [projectsForm]= "projectsForm" *ngIf="isProjectShow"></app-project>
+        @switch (activeIndex) {
+            @case (1) {
+                <app-personal-info [personInfoForm]="personInfoForm"></app-personal-info>
+            }
+            @case (2) {
+                <app-work-experience [experienceForm]= "experienceForm"></app-work-experience>
+            }
+            @case (3) {
+                <app-education [educationForm]= "educationForm"></app-education>
+            }
+            @case (4) {
+                <app-skills [skillsForm]= "skillsForm"></app-skills>
+            }
+            @case (5) {
+                <app-project [projectsForm]= "projectsForm"></app-project>
+            }
+        }
     </div>
 </div>

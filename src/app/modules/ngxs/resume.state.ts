@@ -4,11 +4,11 @@ import { AddSkills, UpdateEducationForm, UpdateExperienceForm, UpdatePersonInfo,
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 export interface ResumeDataInterfaceStateModel {
-    personalInfoForm: any;
-    experienceForm: any;
-    educationForm: any;
-    skillForm: any;
-    projectForm: any;
+    personalInfoForm: FormGroup;
+    experienceForm: FormGroup;
+    educationForm: FormGroup;
+    skillForm: FormGroup;
+    projectForm: FormGroup;
 
   }
 @State<ResumeDataInterfaceStateModel>({
