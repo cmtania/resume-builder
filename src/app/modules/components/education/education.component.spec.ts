@@ -4,7 +4,6 @@ import { EducationComponent } from './education.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgxsModule, Store } from '@ngxs/store';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { executeSchedule } from 'rxjs/internal/util/executeSchedule';
 import { ResumeDataInterfaceStateModel, ResumeDataState } from '../../ngxs/resume.state';
 
 fdescribe('EducationComponent', () => {
@@ -15,9 +14,9 @@ fdescribe('EducationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [EducationComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [Store],
       imports: [ReactiveFormsModule, NgxsModule.forRoot([ResumeDataState])],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
 
