@@ -7,13 +7,23 @@ import { PdfViewerComponent } from "../components/pdf-viewer/pdf-viewer.componen
 import { ResumeBuilderComponent } from "../components/resume-builder/resume-builder.component";
 import { PersonalInfoComponent } from "../components/personal-info/personal-info.component";
 import { WorkExperienceComponent } from "../components/work-experience/work-experience.component";
-import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from "@angular/forms";
+import { EducationComponent } from "../components/education/education.component";
+import { SkillComponent } from "../components/skill/skill.component";
+import { ProjectComponent } from "../components/project/project.component";
+import { NgxsModule } from "@ngxs/store";
+import { ResumeDataState } from "../ngxs/resume.state";
+import { StoreService } from "../services/store.service";
 
 @NgModule({
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    NgbCollapseModule
+    NgbCollapseModule,
+    ReactiveFormsModule,
+    NgbDatepickerModule,
+    NgxsModule.forRoot([ResumeDataState])
   ],  
   declarations: [
     LayoutComponent,
@@ -21,11 +31,14 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
     PdfViewerComponent,
     ResumeBuilderComponent,
     PersonalInfoComponent,
-    WorkExperienceComponent
-    
+    WorkExperienceComponent,
+    EducationComponent,
+    SkillComponent,
+    ProjectComponent
   ],
   exports:[],  
   providers:[
+    StoreService
    ]
 
 })

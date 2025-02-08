@@ -3,7 +3,6 @@
     margin: 20px auto;
     background-color: white;
     padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1, h4 {
@@ -18,6 +17,7 @@ h1 {
 .full-name {
     font-size: 2rem;
     font-weight: bold;
+    white-space: normal;
 }
 .header {
     text-align: center;

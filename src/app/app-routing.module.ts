@@ -4,13 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 export const routes: Routes = [
   { 
-      path: "resume-builder", 
+      path: "", 
       loadChildren: () => 
         import("./modules/layout/layout.module").then(m => m.LayoutModule)
     },
     {
       path: "",
-      redirectTo: "/resume-builder",
+      redirectTo: "",
       pathMatch: "full"
     } 
 ];

@@ -1,4 +1,38 @@
 <div class="container">
-    <app-personal-info></app-personal-info>
+    <div class="form-category">
+        <button type="button" class="btn" (click)="displayForm(1)"  [ngClass]="{'active-form': activeIndex === 1}">
+            Personal
+        </button>
+        <button type="button" class="btn" (click)="displayForm(2)" [ngClass]="{'active-form': activeIndex === 2}">
+            Experience
+        </button>
+        <button type="button" class="btn" (click)="displayForm(3)" [ngClass]="{'active-form': activeIndex === 3}">
+            Education
+        </button>
+        <button type="button" class="btn" (click)="displayForm(4)" [ngClass]="{'active-form': activeIndex === 4}">
+            Skill
+        </button>
+        <button type="button" class="btn" (click)="displayForm(5)" [ngClass]="{'active-form': activeIndex === 5}">
+            Project
+        </button>
+    </div>
+    <div class="form-display">
+        @switch (activeIndex) {
+            @case (1) {
+                <app-personal-info [personInfoForm]="personInfoForm"></app-personal-info>
+            }
+            @case (2) {
+                <app-work-experience [experienceForm]= "experienceForm"></app-work-experience>
+            }
+            @case (3) {
+                <app-education [educationForm]= "educationForm"></app-education>
+            }
+            @case (4) {
+                <app-skills [skillsForm]= "skillsForm"></app-skills>
+            }
+            @case (5) {
+                <app-project [projectsForm]= "projectsForm"></app-project>
+            }
+        }
+    </div>
 </div>
-
