@@ -1,0 +1,52 @@
+<div class="container">
+    <form [formGroup]="educationForm">
+        <div formArrayName="educations">
+            <div *ngFor="let educ of educations.controls; let i = index" [formGroupName]="i">
+                <hr>
+                <div class="mb-3">
+                    <label for="school" class="form-label">School/University</label>
+                    <input type="text" class="form-control no-outline" (keyup)="triggerUpdate()"
+                        formControlName="school" id="school">
+                </div>
+                <div class="mb-3">
+                    <label for="degree" class="form-label">Course/Degree</label>
+                    <input type="email" class="form-control no-outline" (keyup)="triggerUpdate()"
+                        formControlName="degree" id="degree">
+                </div>
+                <div class="mb-3 d-flex justify-content-between align-items-start">
+                    <div class="w-50 pe-2">
+                        <label for="startDate" class="form-label">Start Date (Year)</label>
+                        <div class="input-group">
+                            <select class="form-select" id="startDate" aria-label="Select start year"
+                                formControlName="startDate" (change)="triggerUpdate()">
+                                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="w-50 ps-2">
+                        <label for="endDate" class="form-label">End Date (Year)</label>
+                        <select class="form-select" id="endDate" aria-label="Select end year" formControlName="endDate"
+                            (change)="triggerUpdate()">
+                            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3 d-flex align-items-center">
+                    <input id="currentlyStudy" type="checkbox" formControlName="currentlyStudy"
+                        class="form-check-input me-2" (change)="triggerUpdate()" />
+                    <label for="currentlyStudy" class="form-check-label">Currently studying here</label>
+                </div>
+                <button id="add-education" (click)="removeEducation(i)" type="button" class="btn px-3">
+                    Remove education
+                </button>
+            </div>
+        </div>
+    </form>
+    <div>
+        <hr>
+        <button id="add-education" (click)="addEducation()" type="button" class="btn px-3">
+            Add education
+        </button>
+    </div>
+</div>

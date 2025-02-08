@@ -1,82 +1,60 @@
-<div class="container">
+<div id="resume-builder" class="container">
     <!-- Header Section -->
     <div class="header">
-        <span class="full-name">CHRISTIAN M. TANIA</span>
+        <h2 class="full-name">{{fullname}}</h2>
         <div class="contact-info">
-            <p>tania.devagmail.com</p>
-            <span>|</span>
-            <p>+123-456-7890</p>
-            <span>|</span>
-            <p>New York, USA</p>
+            <p>{{email}}</p>
+            <span *ngIf="phone">|</span>
+            <p>{{phone}}</p>
+            <span *ngIf="cityAddress">|</span>
+            <p>{{cityAddress}}</p>
         </div>
     </div>
 
     <!-- Summary Section -->
-    <div class="summary-section">
+    <div *ngIf="summary" class="summary-section">
         <h2>Summary</h2>
-        <p>A highly motivated and results-driven web developer with 5+ years of experience in building and maintaining responsive websites. Proficient in HTML, CSS, JavaScript, and popular frameworks such as Angular and React. A team player with excellent communication skills and attention to detail.</p>
+        <p>{{summary}}</p>
     </div>
 
     <!-- Work Experience Section -->
-    <div class="work-section">
+    <div class="work-section" *ngIf="workExperiences.length > 0">
         <h2>Work Experience</h2>
         <div class="work-experience">
-            <div class="job">
-                <h3>Front-End Developer - ABC Tech</h3>
-                <span>January 2020 - Present | New York, USA</span>
-                <p>Responsible for creating dynamic, responsive web pages using Angular and JavaScript. Improved site performance by 30% through optimized code and enhanced user experience.</p>
-            </div>
-            <div class="job">
-                <h3>Web Developer - XYZ Solutions</h3>
-                <span>June 2017 - December 2019 | San Francisco, USA</span>
-                <p>Developed and maintained e-commerce websites using HTML, CSS, and JavaScript. Collaborated with cross-functional teams to enhance site functionality and user experience.</p>
+            <div class="job" *ngFor="let work of workExperiences; let i = index">
+                <h3>{{work.position}} - {{work.company}}</h3>
+                <span>{{work.jobDate}}</span>
+                <p>{{work.summary}}</p>
             </div>
         </div>
     </div>
 
     <!-- Education Section -->
-    <div class="educ-section">
+    <div class="educ-section" *ngIf="educations.length > 0">
         <h2>Education</h2>
         <div class="education">
-            <div class="degree">
-                <h3>Bachelor of Science in Computer Science</h3>
-                <span>2013 - 2017 | University of California, Berkeley</span>
-            </div>
-        </div>
-        <div class="education">
-            <div class="degree">
-                <h3>Bachelor of Science in Computer Science</h3>
-                <span>2013 - 2017 | University of California, Berkeley</span>
+            <div class="degree" *ngFor="let school of educations; let i = index">
+                <h3>{{school.degree}}</h3>
+                <span>{{school.schoolDate}} | {{school.school}}</span>
             </div>
         </div>
     </div>
 
     <!-- Skills Section -->
-    <div class="skill-section">
+    <div class="skill-section" *ngIf="skills.length > 0">
         <h2>Skills</h2>
         <ul class="skills-list">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>Angular</li>
-            <li>React</li>
-            <li>Node.js</li>
-            <li>Git</li>
+            <li *ngFor="let skill of skills; let i = index">{{skill}}</li>
         </ul>
     </div>
 
     <!-- Projects Section -->
-    <div class="project-section">
+    <div class="project-section" *ngIf="projects.length > 0">
         <h2>Projects</h2>
-
         <div class="projects">
-            <div class="project">
-                <h3>E-commerce Website</h3>
-                <p>Developed a full-stack e-commerce platform using Angular and Node.js, allowing users to browse products, manage their carts, and securely complete purchases.</p>
-            </div>
-            <div class="project">
-                <h3>Portfolio Website</h3>
-                <p>Created a personal portfolio website showcasing various projects and skills using HTML, CSS, and JavaScript.</p>
+            <div class="project" *ngFor="let proj of projects; let i = index">
+                <h3>{{proj.projectName}}</h3>
+                <p>{{proj.description}}</p>
             </div>
         </div>
     </div>
