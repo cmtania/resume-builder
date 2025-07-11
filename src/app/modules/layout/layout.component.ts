@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { jsPDF } from "jspdf";
+import { StoreService } from '../services/store.service';
 
 @Component({
   selector: 'app-layout',
@@ -9,7 +10,7 @@ import { jsPDF } from "jspdf";
 })
 export class LayoutComponent implements OnInit {
 
-  constructor(){}
+  constructor(private storeService: StoreService){}
 
   htmlData: any;
   contact =  {
@@ -30,27 +31,32 @@ export class LayoutComponent implements OnInit {
       orientation: "portrait",
       unit: "pt",
       format: [800, 925],
-      precision: 10
+      precision: 10,
+      
     });
 
-    pdf.setFont("sans-serif");
+    pdf.setFont("helvetica");
+    pdf.setFontSize(12);
 
     console.log("htmlData", htmlData);
     setTimeout(() => {
      
-      pdf.html(htmlData as any).then(()=>{
-
+      pdf.html(htmlData as any, {
+          margin: [15, 15, 15, 15],
+          autoPaging: 'text',
+          width: 770, 
+          windowWidth: 800,
+        }).then(()=>{
+        
         const pageCount = pdf.getNumberOfPages();
-        for(let i = pageCount; i > 1; i--){
-          pdf.deletePage(i);
-        }
+        pdf.deletePage(pageCount);
 
         htmlData?.classList.remove("pdf-view");
         
         pdf.save("my-resume.pdf");
-      });
+      },
+    );
     });
-    
   }
 
 }

@@ -12,16 +12,16 @@
     </div>
 
     <!-- Summary Section -->
-    <div *ngIf="summary" class="summary-section">
+    <div *ngIf="summary" class="summary-section section">
         <h2>Summary</h2>
         <p>{{summary}}</p>
     </div>
 
     <!-- Work Experience Section -->
-    <div class="work-section" *ngIf="workExperiences.length > 0">
+    <div class="work-section section" *ngIf="workExperiences.length > 0">
         <h2>Work Experience</h2>
         <div class="work-experience">
-            <div class="job" *ngFor="let work of workExperiences; let i = index">
+            <div class="job experience-item" *ngFor="let work of workExperiences; let i = index">
                 <h3>{{work.position}} - {{work.company}}</h3>
                 <span>{{work.jobDate}}</span>
                 <p>{{work.summary}}</p>
@@ -30,10 +30,10 @@
     </div>
 
     <!-- Education Section -->
-    <div class="educ-section" *ngIf="educations.length > 0">
+    <div class="educ-section section" *ngIf="educations.length > 0">
         <h2>Education</h2>
         <div class="education">
-            <div class="degree" *ngFor="let school of educations; let i = index">
+            <div class="degree education-item" *ngFor="let school of educations; let i = index">
                 <h3>{{school.degree}}</h3>
                 <span>{{school.schoolDate}} | {{school.school}}</span>
             </div>
@@ -41,7 +41,7 @@
     </div>
 
     <!-- Skills Section -->
-    <div class="skill-section" *ngIf="skills.length > 0">
+    <div class="skill-section section" *ngIf="skills.length > 0">
         <h2>Skills</h2>
         <ul class="skills-list">
             <li *ngFor="let skill of skills; let i = index">{{skill}}</li>
@@ -49,10 +49,10 @@
     </div>
 
     <!-- Projects Section -->
-    <div class="project-section" *ngIf="projects.length > 0">
+    <div class="project-section section" *ngIf="projects.length > 0">
         <h2>Projects</h2>
         <div class="projects">
-            <div class="project" *ngFor="let proj of projects; let i = index">
+            <div class="project project-item" *ngFor="let proj of projects; let i = index">
                 <h3>{{proj.projectName}}</h3>
                 <p>{{proj.description}}</p>
             </div>

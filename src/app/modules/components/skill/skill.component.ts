@@ -33,7 +33,6 @@ export class SkillComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("skillsForm", this.skillsForm);
   }
 
   get skills(): FormArray {
@@ -46,8 +45,10 @@ export class SkillComponent implements OnInit {
   }
 
   addSkill(skill: string): void {
+    if(!this.skills.value.includes(skill)) {
       this.skills.push(new FormControl(skill));
       this.triggerUpdate();
+    }
   }
 
   triggerUpdate(){
