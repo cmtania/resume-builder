@@ -49,7 +49,7 @@ export class LayoutComponent implements OnInit {
         }).then(()=>{
         
         const pageCount = pdf.getNumberOfPages();
-        pdf.deletePage(pageCount);
+        // pdf.deletePage(pageCount);
 
         htmlData?.classList.remove("pdf-view");
         
