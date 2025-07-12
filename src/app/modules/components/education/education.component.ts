@@ -17,7 +17,8 @@ export class EducationComponent implements OnInit {
     this.generateYears();
   }
 
-  years: Array<number> = [];
+  startYears: Array<number> = [];
+  endYears: Array<number> = [];
 
   ngOnInit(): void {
     if(this.educations.length === 0){
@@ -48,15 +49,28 @@ export class EducationComponent implements OnInit {
     this.triggerUpdate();
   }
 
-  triggerUpdate(){
+  triggerUpdate(): void {
     this.store.dispatch(new UpdateEducationForm(this.educationForm));
+  }
+
+  removePastYears(index: number): void {
+    this.generateYears();
+    const startDateValue = this.educationForm.get('educations').at(index).get('startDate')?.value;
+    const selectedStartYear = parseInt(startDateValue);
+    const startYearIndex =  this.startYears.findIndex(year => year === selectedStartYear);
+    if (startYearIndex > -1) {
+      this.endYears = this.endYears.slice(0, startYearIndex);
+    }
   }
 
   private generateYears() {
     const currentYear = new Date().getFullYear();
-    const startYear = currentYear - 40; 
+    const startYear = currentYear - 40;
+    this.startYears = [];
+    this.endYears = []; 
     for (let year = currentYear; year >= startYear; year--) {
-      this.years.push(year);
+      this.startYears.push(year);
+      this.endYears.push(year);
     }
   }
 

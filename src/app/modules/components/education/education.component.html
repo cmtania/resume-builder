@@ -18,8 +18,8 @@
                         <label for="startDate" class="form-label">Start Date (Year)</label>
                         <div class="input-group">
                             <select class="form-select" id="startDate" aria-label="Select start year"
-                                formControlName="startDate" (change)="triggerUpdate()">
-                                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                                formControlName="startDate" (change)="triggerUpdate(); removePastYears(i)">
+                                <option *ngFor="let year of startYears" [value]="year">{{ year }}</option>
                             </select>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                         <label for="endDate" class="form-label">End Date (Year)</label>
                         <select class="form-select" id="endDate" aria-label="Select end year" formControlName="endDate"
                             (change)="triggerUpdate()">
-                            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                            <option *ngFor="let year of endYears" [value]="year">{{ year }}</option>
                         </select>
                     </div>
                 </div>
