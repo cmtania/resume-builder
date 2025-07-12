@@ -4,16 +4,16 @@
             Personal
         </button>
         <button type="button" class="btn" (click)="displayForm(2)" [ngClass]="{'active-form': activeIndex === 2}">
-            Experience
+            Work Experiences
         </button>
         <button type="button" class="btn" (click)="displayForm(3)" [ngClass]="{'active-form': activeIndex === 3}">
-            Education
+            Skills
         </button>
         <button type="button" class="btn" (click)="displayForm(4)" [ngClass]="{'active-form': activeIndex === 4}">
-            Skill
+            Projects
         </button>
-        <button type="button" class="btn" (click)="displayForm(5)" [ngClass]="{'active-form': activeIndex === 5}">
-            Project
+         <button type="button" class="btn" (click)="displayForm(5)" [ngClass]="{'active-form': activeIndex === 5}">
+            Education
         </button>
     </div>
     <div class="form-display">
@@ -25,13 +25,13 @@
                 <app-work-experience [experienceForm]= "experienceForm"></app-work-experience>
             }
             @case (3) {
-                <app-education [educationForm]= "educationForm"></app-education>
-            }
-            @case (4) {
                 <app-skills [skillsForm]= "skillsForm"></app-skills>
             }
-            @case (5) {
+            @case (4) {
                 <app-project [projectsForm]= "projectsForm"></app-project>
+            }
+             @case (5) {
+                <app-education [educationForm]= "educationForm"></app-education>
             }
         }
     </div>

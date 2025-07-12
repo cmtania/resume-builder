@@ -24,27 +24,29 @@ h1 {
 }
 
  /* Contact Info Section */
- .contact-info {
+.contact-info {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px; /* Adds space between contact items */
     color: #555;
     margin-bottom: 10px;
-}
 
-.contact-info p {
-    margin: 0;
-}
+    p {
+        margin: 0;
+    }
 
-.contact-info span {
-    margin: 0 5px;
-    color: #888;
+    span {
+        margin: 0 5px;
+        color: #888;
+    }
+
 }
 
 hr {
     border: 1px solid #ccc;
 }
+/* END */
 
  /* Summary Section */
 .summary-section  {
@@ -64,6 +66,7 @@ hr {
 
  /* Work Experience Section */
 .work-section {
+    margin-bottom: 15px;
     h2 {
         font-size: 16px;
         border-bottom: 2px solid #007bff;
@@ -71,7 +74,6 @@ hr {
     }
 
     .work-experience {
-        margin-bottom: 15px;
         .job h3 {
             font-size: 15px;
         }
@@ -89,6 +91,7 @@ hr {
 
  /* Education Experience Section */
 .educ-section  {
+    margin-bottom: 15px;
     h2 {
         font-size: 16px;
         border-bottom: 2px solid #007bff;
@@ -96,7 +99,6 @@ hr {
     }
 
     .education {
-        margin-bottom: 15px;
         .degree {
             h3 {
                 font-size: 14px;
@@ -112,35 +114,37 @@ hr {
  /* END */
  /* Skill Section */
 .skill-section {
+    margin-bottom: 15px;
     h2 {
         font-size: 16px;
         border-bottom: 2px solid #007bff;
         padding-bottom: 5px; 
     }
-}
 
-.skills-list {
-    list-style: none;
-    padding: 0;
-    font-size: 14px;
-}
+    .skill-list {
+        list-style: none;
+        padding: 0;
+        font-size: 14px;
 
-.skills-list li {
-    background-color: #fff;
-    color: #000000;
-    display: inline-block;
-    padding: 5px 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    border-radius: .375rem;
-    border: 0 solid #e5e7eb;
-    border-width: 1px;
-    font-size: 14px;
+        li {
+            background-color: #fff;
+            color: #000000;
+            display: inline-block;
+            padding: 5px 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border-radius: .375rem;
+            border: 0 solid #e5e7eb;
+            border-width: 1px;
+            font-size: 14px;
+        }
+    }
 }
 
 /* END */
 /* Project Section */
 .project-section {
+    margin-bottom: 15px;
     h2 {
         font-size: 16px;
         border-bottom: 2px solid #007bff;

@@ -92,8 +92,8 @@ export class ResumeBuilderComponent implements OnInit {
   private getEducation(educations: FormArray){
     for (const [index, control] of educations.controls.entries()) {
       const educationData = control.value;
-      const end = educationData?.currentlyStudy ? "Present" : educationData?.startDate;
-      const schoolDate = `${educationData?.endDate} - ${end}`;
+      const end = educationData?.currentlyStudy ? "Present" : educationData?.endDate;
+      const schoolDate = `${educationData?.startDate} - ${end}`;
   
       if(educationData?.school || educationData?.degree){
         this.educations.push(

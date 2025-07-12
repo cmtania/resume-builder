@@ -29,21 +29,10 @@
         </div>
     </div>
 
-    <!-- Education Section -->
-    <div class="educ-section section" *ngIf="educations.length > 0">
-        <h2>Education</h2>
-        <div class="education">
-            <div class="degree education-item" *ngFor="let school of educations; let i = index">
-                <h3>{{school.degree}}</h3>
-                <span>{{school.schoolDate}} | {{school.school}}</span>
-            </div>
-        </div>
-    </div>
-
     <!-- Skills Section -->
     <div class="skill-section section" *ngIf="skills.length > 0">
         <h2>Skills</h2>
-        <ul class="skills-list">
+        <ul class="skill-list">
             <li *ngFor="let skill of skills; let i = index">{{skill}}</li>
         </ul>
     </div>
@@ -55,6 +44,17 @@
             <div class="project project-item" *ngFor="let proj of projects; let i = index">
                 <h3>{{proj.projectName}}</h3>
                 <p>{{proj.description}}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Education Section -->
+    <div class="educ-section section" *ngIf="educations.length > 0">
+        <h2>Education</h2>
+        <div class="education">
+            <div class="degree education-item" *ngFor="let school of educations; let i = index">
+                <h3>{{school.degree}}</h3>
+                <span>{{school.schoolDate}} | {{school.school}}</span>
             </div>
         </div>
     </div>

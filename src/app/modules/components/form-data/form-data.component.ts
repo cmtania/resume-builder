@@ -11,7 +11,7 @@ export class FormDataComponent implements OnInit {
   activeIndex = 1;
   currentFormKey: string = 'personInfo';
 
-  formKeys = ['personInfo', 'experience', 'education', 'skills', 'projects'];
+  formKeys = ['personInfo', 'experience', 'skills', 'projects', 'education'];
 
   personInfoForm: FormGroup;
   experienceForm: FormGroup;
@@ -75,12 +75,12 @@ export class FormDataComponent implements OnInit {
         return this.personInfoForm;
       case 'experience':
         return this.experienceForm;
-      case 'education':
-        return this.educationForm;
       case 'skills':
         return this.skillsForm;
       case 'projects':
         return this.projectsForm;
+      case 'education':
+        return this.educationForm;
       default:
         return this.personInfoForm;
     }
